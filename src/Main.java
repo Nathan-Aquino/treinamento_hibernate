@@ -1,6 +1,8 @@
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -8,13 +10,29 @@ public class Main {
 
         EntityManager gerenciador = fabricaDeGerenciador.createEntityManager();
 
-        Produto produto = new Produto();
+        List<Carro> carros = new ArrayList<>();
+        List<Acessorio> acessorios = new ArrayList<>();
 
-        produto.setNome("Notebook");
-        produto.setQuantidade(2);
+        Marca marca = new Marca();
+        marca.setNome("Toyota");
+
+        Acessorio acessorio = new Acessorio();
+        acessorio.setNome("Painel de Led");
+        acessorios.add(acessorio);
+
+        Carro carro = new Carro();
+        carro.setNome("Corolla");
+        carro.setMarca(marca);
+        carro.setAcessorios(acessorios);
+        carros.add(carro);
+
+        acessorio.setCarros(carros);
+        marca.setCarros(carros);
 
         gerenciador.getTransaction().begin();
-        gerenciador.persist(produto);
+        gerenciador.persist(marca);
+        gerenciador.persist(carro);
+        gerenciador.persist(acessorio);
         gerenciador.getTransaction().commit();
 
         gerenciador.close();
