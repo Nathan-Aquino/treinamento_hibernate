@@ -15,7 +15,7 @@ public class TesteVenda {
     private Integer idVenda;
 
     @Before
-    public void criacaoProduto () {
+    public void criacaoVenda () {
         IGenericDao<Cliente> clienteDao = new ClienteDao();
         IGenericDao<Produto> produtoDao = new ProdutoDao();
         IGenericDao<VendaProduto> vendaProdutoDao = new VendaProdutoDao();
@@ -57,7 +57,7 @@ public class TesteVenda {
     }
 
     @Test
-    public void encontraProduto () {
+    public void encontraVenda () {
         Venda venda = dao.encontrarPorId(Venda.class, this.idVenda);
 
         Assert.assertNotNull(venda);
