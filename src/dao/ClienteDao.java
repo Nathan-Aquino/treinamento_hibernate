@@ -9,6 +9,9 @@ public class ClienteDao extends GenericDao<Cliente> implements IGenericDao<Clien
     public ClienteDao() {
         super();
     }
+    public ClienteDao(String persistenceUnit) {
+        super(persistenceUnit);
+    }
 
     @Override
     public Cliente cadastrar(Cliente objeto) {
