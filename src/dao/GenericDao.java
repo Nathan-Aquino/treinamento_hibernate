@@ -11,6 +11,10 @@ public abstract class GenericDao<T> implements IGenericDao <T> {
         this.gerenciador = ConexaoBD.getGerenciador();
     }
 
+    GenericDao (String persistenceUnit) {
+        this.gerenciador = ConexaoBD.getGerenciador(persistenceUnit);
+    }
+
     @Override
     public T cadastrar(T objeto) {
         gerenciador.getTransaction().begin();

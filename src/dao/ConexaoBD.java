@@ -12,9 +12,22 @@ public class ConexaoBD {
         gerenciador = fabricaDeGerenciador.createEntityManager();
     }
 
+    private ConexaoBD (String persistenceUnit) {
+        EntityManagerFactory fabricaDeGerenciador = Persistence.createEntityManagerFactory(persistenceUnit);
+        gerenciador = fabricaDeGerenciador.createEntityManager();
+    }
+
     public static EntityManager getGerenciador () {
         if (gerenciador == null) {
             new ConexaoBD();
+        }
+
+        return gerenciador;
+    }
+
+    public static EntityManager getGerenciador (String persistenceUnit) {
+        if (gerenciador == null) {
+            new ConexaoBD(persistenceUnit);
         }
 
         return gerenciador;

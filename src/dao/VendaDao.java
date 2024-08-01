@@ -5,8 +5,12 @@ import model.Venda;
 import java.util.List;
 
 public class VendaDao extends GenericDao<Venda> implements IGenericDao<Venda>{
+
     public VendaDao () {
         super();
+    }
+    public VendaDao (String persistenceUnit) {
+        super(persistenceUnit);
     }
 
     @Override
